@@ -1,0 +1,122 @@
+/* Franie: place your licensed .woff2 files in /public/fonts/ */
+@font-face {
+  font-family: 'Franie';
+  src:
+    local('Franie'),
+    local('Franie Variable'),
+    url('/fonts/Franie-Variable.woff2') format('woff2-variations'),
+    url('/fonts/Franie-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Franie';
+  src: local('Franie Regular'), url('/fonts/Franie-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Franie';
+  src: local('Franie Medium'), url('/fonts/Franie-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Franie';
+  src: local('Franie SemiBold'), url('/fonts/Franie-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Franie';
+  src: local('Franie Bold'), url('/fonts/Franie-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Franie';
+  src: local('Franie ExtraBold'), url('/fonts/Franie-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark text-white font-sans antialiased;
+    font-family: 'Franie', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-card/60 backdrop-blur-xl border border-primary/10;
+  }
+
+  .glass-hover {
+    @apply transition-all duration-300 hover:border-primary/30 hover:shadow-glow-sm;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-emerald-300 bg-clip-text text-transparent;
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
+}
+
+/* Animated background grid */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(3, 248, 197, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(3, 248, 197, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* 3D coin styles */
+.coin-scene {
+  perspective: 1000px;
+}
+
+.coin-3d {
+  transform-style: preserve-3d;
+  animation: float 6s ease-in-out infinite;
+}
+
+.coin-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  backface-visibility: hidden;
+}
+
+.coin-edge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 12px;
+  height: 100%;
+  margin-left: -6px;
+  transform-origin: center center;
+  background: linear-gradient(180deg, #03f8c5 0%, #028a6e 50%, #03f8c5 100%);
+  border-radius: 2px;
+}
