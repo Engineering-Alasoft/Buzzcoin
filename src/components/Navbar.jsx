@@ -83,10 +83,11 @@ export default function Navbar() {
 
       {/* Mobile Fullscreen Menu */}
       <div
-        className={`fixed inset-0 z-40 md:hidden bg-[#010b11]/95 backdrop-blur-xl transition-all duration-300 ${menuOpen
+        className={`fixed inset-0 z-40 md:hidden bg-[#010b11]/95 backdrop-blur-xl transition-all duration-300 ${
+          menuOpen
             ? 'opacity-100 visible'
             : 'opacity-0 invisible'
-          }`}
+        }`}
       >
         <div className="flex h-full flex-col items-center justify-center gap-8 px-6">
           {navLinks.map((link) => (

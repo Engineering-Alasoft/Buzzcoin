@@ -17,12 +17,16 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Brand */}
           <div className="text-center md:text-left">
-            <div className="flex items-center gap-2 justify-center md:justify-start mb-3">
-              <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center">
-                <span className="text-primary font-extrabold text-sm">B</span>
-              </div>
-              <span className="text-xl font-extrabold tracking-wider text-gradient">BUZ</span>
-            </div>
+          <a
+              href="#home"
+              className="flex items-center shrink-0"
+            >
+              <img
+                src="/images/Nav_logo.png"
+                alt="BUZ"
+                className="h-8 lg:h-10 w-auto transition-opacity hover:opacity-90"
+              />
+            </a>
             <p className="text-white/40 text-sm max-w-xs">
               The future of digital value. Fast, secure, and community-powered.
             </p>
