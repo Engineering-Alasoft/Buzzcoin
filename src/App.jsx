@@ -1,12 +1,16 @@
-import { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import ContractBar from './components/ContractBar';
 import Stats from './components/Stats';
+import Partners from './components/Partners';
 import WhyBuzz from './components/WhyBuzz';
+import HowToBuy from './components/HowToBuy';
 import Tokenomics from './components/Tokenomics';
 import Roadmap from './components/Roadmap';
 import FAQ from './components/FAQ';
+import CommunityCTA from './components/CommunityCTA';
 import Footer from './components/Footer';
+import BackToTop from './components/BackToTop';
 
 export default function App() {
   return (
@@ -22,13 +26,18 @@ export default function App() {
         <Navbar />
         <main>
           <Hero />
+          <ContractBar />
           <Stats />
+          <Partners />
           <WhyBuzz />
+          <HowToBuy />
           <Tokenomics />
           <Roadmap />
           <FAQ />
+          <CommunityCTA />
         </main>
         <Footer />
+        <BackToTop />
       </div>
     </div>
   );

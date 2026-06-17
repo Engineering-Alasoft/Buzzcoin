@@ -20,6 +20,8 @@ export default {
         float: 'float 6s ease-in-out infinite',
         'spin-slow': 'spin 20s linear infinite',
         pulseGlow: 'pulseGlow 4s ease-in-out infinite',
+        marquee: 'marquee 30s linear infinite',
+        'coin-float': 'coinFloat 5s ease-in-out infinite',
       },
       keyframes: {
         float: {
@@ -29,6 +31,14 @@ export default {
         pulseGlow: {
           '0%, 100%': { opacity: '0.4' },
           '50%': { opacity: '0.8' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        coinFloat: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-14px)' },
         },
       },
     },

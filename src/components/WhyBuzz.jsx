@@ -1,49 +1,174 @@
+import { useState } from 'react';
+
+/*
+  Image paths (place in public/images/):
+  - why-buz-unlimited-scale.png  → 500×500px  (top + bottom horizontal cards)
+  - why-buz-fast-transactions
+.png      → 400×400px  (middle left card)
+  - why-buz-developer-hub.png    → 400×400px  (middle right card)
+  - why-buz-creativity.png       → 500×500px  (optional alias for bottom card)
+
+  Use png or png with transparent background for best results.
+*/
+
 const features = [
   {
-    icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
-    ),
+    id: 'fast-transactions',
+    layout: 'horizontal',
+    image: '/images/1.png',
+    imageSize: '500 × 500px',
     title: 'Fast Transactions',
-    description: 'Lightning-fast transfers with near-zero latency, built on optimized blockchain infrastructure.',
+    description:
+      "BUZ is built on a high-performance blockchain infrastructure designed to process transactions quickly and efficiently. Whether you're transferring tokens, participating in ecosystem activities, or interacting with future utilities, every transaction is optimized for speed, reliability, and a seamless user experience.",
+    button: null,
   },
   {
-    icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      </svg>
-    ),
+    id: 'secure-ecosystem',
+    layout: 'vertical',
+    image: '/images/2.png',
+    imageSize: '400 × 400px',
     title: 'Secure Ecosystem',
-    description: 'Audited smart contracts and multi-layer security protocols protect every transaction.',
+    description:
+      "Security is at the core of the BUZ ecosystem. Built using trusted blockchain technology and transparent smart contract standards, BUZ prioritizes asset protection, network integrity, and user confidence. Our focus is creating a secure environment where holders can participate with peace of mind.",
+    button: null,
   },
   {
-    icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-      </svg>
-    ),
+    id: 'community-driven',
+    layout: 'vertical',
+    image: '/images/3.png',
+    imageSize: '400 × 400px',
     title: 'Community Driven',
-    description: 'Governed by holders with transparent voting and rewards for active participants.',
+    description: "The BUZ community plays a central role in shaping the future of the ecosystem. Through engagement, collaboration, and shared vision, holders contribute to growth, adoption, and innovation. Together, we are building a stronger network powered by collective participation and long-term commitment.",
+    button: null,
   },
   {
-    icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-      </svg>
-    ),
+    id: 'built-for-growth',
+    layout: 'horizontal',
+    image: '/images/4.png',
+    imageSize: '500 × 500px',
     title: 'Built for Growth',
-    description: 'Strategic tokenomics and ecosystem partnerships designed for long-term value creation.',
+    description: "BUZ is designed with scalability and long-term expansion in mind. As the ecosystem evolves, new opportunities, partnerships, and utilities will strengthen the token's value and reach. Our roadmap focuses on sustainable growth, increasing adoption, and creating lasting utility for the community.",
+    button: null,
   },
 ];
 
+function FeatureImage({ src, alt, sizeLabel, className = '' }) {
+  const [hasError, setHasError] = useState(false);
+
+  if (hasError) {
+    return (
+      <div
+        className={`flex flex-col items-center justify-center rounded-2xl border border-dashed border-primary/25 bg-[#010b11] ${className}`}
+      >
+        <svg className="w-10 h-10 text-primary/30 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={1.5}
+            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+          />
+        </svg>
+        <p className="text-primary/50 text-xs font-semibold uppercase tracking-wider">Your image here</p>
+        <p className="text-white/30 text-xs mt-1">{sizeLabel}</p>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={`object-contain ${className}`}
+      onError={() => setHasError(true)}
+      loading="lazy"
+      decoding="async"
+    />
+  );
+}
+
+function CardButton({ label, href = '#' }) {
+  return (
+    <a
+      href={href}
+      className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-full text-sm font-semibold text-dark
+                 bg-gradient-to-r from-primary to-emerald-300
+                 hover:shadow-glow-sm hover:scale-[1.02] transition-all duration-300"
+    >
+      {label}
+      <span aria-hidden="true">→</span>
+    </a>
+  );
+}
+
+function HorizontalCard({ feature }) {
+  return (
+    <div className="rounded-2xl md:rounded-3xl overflow-hidden border border-primary/10 bg-[#00040e] transition-all duration-300 hover:border-primary/30 hover:shadow-glow-sm">
+      <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10 p-6 sm:p-8 md:p-10 lg:p-12">
+        <div className="w-full md:w-[42%] flex justify-center shrink-0">
+          <FeatureImage
+            src={feature.image}
+            alt={feature.title}
+            sizeLabel={feature.imageSize}
+            className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[400px] aspect-square"
+          />
+        </div>
+
+        <div className="w-full md:flex-1 text-center md:text-left">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white leading-tight">
+            {feature.title}
+          </h3>
+          <p className="text-white/50 text-sm sm:text-base leading-relaxed mt-4 max-w-xl md:max-w-none mx-auto md:mx-0">
+            {feature.description}
+          </p>
+          {feature.button && (
+            <div className="flex justify-center md:justify-start">
+              <CardButton label={feature.button.label} href={feature.button.href} />
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function VerticalCard({ feature }) {
+  return (
+    <div className="rounded-2xl md:rounded-3xl overflow-hidden border border-primary/10 bg-[#00040e] h-full transition-all duration-300 hover:border-primary/30 hover:shadow-glow-sm">
+      <div className="flex flex-col p-6 sm:p-8 md:p-10 h-full">
+        <div className="flex justify-center mb-6 md:mb-8">
+          <FeatureImage
+            src={feature.image}
+            alt={feature.title}
+            sizeLabel={feature.imageSize}
+            className="w-full max-w-[240px] sm:max-w-[280px] md:max-w-[320px] aspect-square"
+          />
+        </div>
+
+        <div className="flex flex-col flex-1">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white leading-tight">
+            {feature.title}
+          </h3>
+          <p className="text-white/50 text-sm sm:text-base leading-relaxed mt-3 flex-1">
+            {feature.description}
+          </p>
+          {feature.button && (
+            <CardButton label={feature.button.label} href={feature.button.href} />
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function WhyBuzz() {
+  const [horizontalTop, verticalLeft, verticalRight, horizontalBottom] = features;
+
   return (
     <section className="section-padding relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto">
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-10 sm:mb-12 md:mb-16">
           <span className="text-primary text-sm font-semibold uppercase tracking-widest">Why Choose Us</span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mt-3">
             Why <span className="text-gradient">BUZ</span>?
@@ -53,23 +178,15 @@ export default function WhyBuzz() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
-          {features.map((feature) => (
-            <div
-              key={feature.title}
-              className="glass glass-hover rounded-2xl p-6 md:p-8 group"
-            >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mb-5 group-hover:shadow-glow-sm transition-shadow duration-300">
-                {feature.icon}
-              </div>
-              <h3 className="text-lg font-bold mb-3 group-hover:text-primary transition-colors duration-300">
-                {feature.title}
-              </h3>
-              <p className="text-white/50 text-sm leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
-          ))}
+        <div className="space-y-4 sm:space-y-5 md:space-y-6">
+          <HorizontalCard feature={horizontalTop} />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
+            <VerticalCard feature={verticalLeft} />
+            <VerticalCard feature={verticalRight} />
+          </div>
+
+          <HorizontalCard feature={horizontalBottom} />
         </div>
       </div>
     </section>

@@ -16,13 +16,13 @@ export default function Footer() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Brand */}
-          <div className="text-center md:text-left">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
           <a
               href="#home"
-              className="flex items-center shrink-0"
+              className="flex items-center justify-center md:justify-start shrink-0"
             >
               <img
-                src="/images/Nav_logo.png"
+                src="/images/Nav_logo.webp"
                 alt="BUZ"
                 className="h-8 lg:h-10 w-auto transition-opacity hover:opacity-90"
               />
