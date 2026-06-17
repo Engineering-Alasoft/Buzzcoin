@@ -71,7 +71,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
               <a
                 href="#how-to-buy"
-                className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-3.5 rounded-full bg-primary text-dark font-bold text-sm sm:text-base hover:shadow-glow transition-all duration-300 hover:scale-105"
+                className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-3.5 rounded-full bg-[#061822] text-primary font-bold text-sm sm:text-base hover:shadow-glow transition-all duration-300 hover:scale-105"
               >
                 Buy BUZ
               </a>

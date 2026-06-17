@@ -56,7 +56,7 @@ export default function Navbar() {
             <div className="hidden md:block">
               <a
                 href="#how-to-buy"
-                className="inline-flex items-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-dark transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(3,248,197,0.4)]"
+                className="inline-flex items-center rounded-full bg-[#061822] px-6 py-3 text-sm font-semibold text-primary transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(3,248,197,0.4)]"
               >
                 Buy BUZ
               </a>
