@@ -56,8 +56,8 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} BUZ. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-xs text-white/30">
-            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+            {/* <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a> */}
           </div>
         </div>
       </div>
