@@ -16,13 +16,17 @@ export default function CommunityCTA() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="#"
+                href="https://t.me/Buzzzcoin"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-primary text-dark font-bold text-sm hover:shadow-glow transition-all duration-300 hover:scale-105"
               >
                 Join Telegram
               </a>
               <a
-                href="#"
+                href="https://x.com/buzzzcoin"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-3.5 rounded-full glass border border-primary/30 text-white font-semibold text-sm hover:border-primary/60 hover:shadow-glow-sm transition-all duration-300"
               >
                 Follow on X

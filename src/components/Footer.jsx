@@ -1,11 +1,10 @@
-import { FaFacebook, FaInstagram, FaTelegram } from 'react-icons/fa';
+import { FaFacebook, FaTelegram } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 
 const socialLinks = [
-  { name: 'Facebook', href: '#', icon: FaFacebook },
-  { name: 'Instagram', href: '#', icon: FaInstagram },
-  { name: 'X', href: '#', icon: FaXTwitter },
-  { name: 'Telegram', href: '#', icon: FaTelegram },
+  { name: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61590643571056', icon: FaFacebook },
+  { name: 'X', href: 'https://x.com/buzzzcoin', icon: FaXTwitter },
+  { name: 'Telegram', href: 'https://t.me/Buzzzcoin', icon: FaTelegram },
 ];
 
 export default function Footer() {
