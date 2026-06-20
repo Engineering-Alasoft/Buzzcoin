@@ -27,7 +27,7 @@ export default function App() {
         <main>
           <Hero />
           <ContractBar />
-          <Stats />
+          {/* <Stats /> */}
           <Partners />
           <WhyBuzz />
           <HowToBuy />
