@@ -1,7 +1,7 @@
 const stats = [
   { label: 'Market Cap', value: '$12.4M', change: '+8.2%' },
   { label: 'Holders', value: '24,500+', change: '+1,200' },
-  { label: 'Total Supply', value: '1B BUZ', change: 'Fixed' },
+  { label: 'Total Supply', value: '300M BUZ', change: 'Fixed' },
   { label: 'Volume', value: '$2.1M', change: '24h' },
 ];
 

@@ -1,6 +1,21 @@
 import { useState } from 'react';
 
-const TOTAL_SUPPLY = 1_000_000_000;
+const TOTAL_SUPPLY = 300_000_000;
+
+function formatTotalSupply() {
+  if (TOTAL_SUPPLY >= 1_000_000_000) {
+    return `${TOTAL_SUPPLY / 1_000_000_000}B`;
+  }
+  return `${TOTAL_SUPPLY / 1_000_000}M`;
+}
+
+function formatTokenAmount(percent) {
+  const amount = (TOTAL_SUPPLY * percent) / 100;
+  if (amount >= 1_000_000_000) return `${amount / 1_000_000_000}B`;
+  if (amount >= 1_000_000) return `${amount / 1_000_000}M`;
+  if (amount >= 1_000) return `${amount / 1_000}K`;
+  return `${amount}`;
+}
 
 const allocations = [
   { label: 'Ecosystem', percent: 40, color: '#03f8c5', description: 'Development, dApps, and ecosystem rewards' },
@@ -9,12 +24,6 @@ const allocations = [
   { label: 'Team', percent: 10, color: '#22d3ee', description: 'Core team with vesting schedule' },
   { label: 'Reserve', percent: 10, color: '#6ee7b7', description: 'Treasury and future opportunities' },
 ];
-
-function formatTokenAmount(percent) {
-  const amount = (TOTAL_SUPPLY * percent) / 100;
-  if (amount >= 1_000_000_000) return `${amount / 1_000_000_000}B`;
-  return `${amount / 1_000_000}M`;
-}
 
 function toggleSelection(current, label) {
   return current === label ? null : label;
@@ -130,7 +139,7 @@ function DonutChart({ hovered, onHover }) {
           </>
         ) : (
           <>
-            <span className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gradient leading-none">1B</span>
+            <span className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gradient leading-none">{formatTotalSupply()}</span>
             <span className="text-white/50 text-xs sm:text-sm mt-1">Total Supply</span>
             <span className="text-primary/60 text-[10px] sm:text-xs mt-1.5 font-medium hidden sm:block">
               Hover a segment
@@ -244,7 +253,7 @@ export default function Tokenomics() {
         <div className="mt-8 sm:mt-10 md:mt-14">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4">
             {[
-              { label: 'Total Supply', value: '1B BUZ' },
+              { label: 'Total Supply', value: `${formatTotalSupply()} BUZ` },
               { label: 'Tax', value: '0%' },
               { label: 'Liquidity', value: 'Locked' },
               { label: 'Contract', value: 'Renounced' },

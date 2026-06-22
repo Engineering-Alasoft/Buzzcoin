@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FaCopy, FaCheck } from 'react-icons/fa';
 
-const CONTRACT = '0x79f458411f27c5d21d7ef348c3fdf793ce1c0f42';
+const CONTRACT = '0x79fa1Ea465a08b319595BAeDbb32009E6deOF42';
 
 export default function ContractBar() {
   const [copied, setCopied] = useState(false);
