@@ -75,12 +75,12 @@ export default function Hero() {
               >
                 Buy BUZ
               </a>
-              {/* <a
-                href="#"
+              <a
+                href="https://buzzcoin.co/WhitePaper.pdf"
                 className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-3.5 rounded-full glass border border-primary/30 text-white font-semibold text-sm sm:text-base hover:border-primary/60 hover:shadow-glow-sm transition-all duration-300"
               >
                 View Whitepaper
-              </a> */}
+              </a>
             </div>
           </div>
 

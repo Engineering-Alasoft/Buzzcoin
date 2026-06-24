@@ -9,20 +9,39 @@ function formatTotalSupply() {
   return `${TOTAL_SUPPLY / 1_000_000}M`;
 }
 
-function formatTokenAmount(percent) {
-  const amount = (TOTAL_SUPPLY * percent) / 100;
-  if (amount >= 1_000_000_000) return `${amount / 1_000_000_000}B`;
-  if (amount >= 1_000_000) return `${amount / 1_000_000}M`;
-  if (amount >= 1_000) return `${amount / 1_000}K`;
-  return `${amount}`;
+function formatAllocationAmount(amount) {
+  return amount.toLocaleString('en-US');
 }
 
 const allocations = [
-  { label: 'Ecosystem', percent: 40, color: '#03f8c5', description: 'Development, dApps, and ecosystem rewards' },
-  { label: 'Liquidity', percent: 25, color: '#34d399', description: 'DEX pools and market stability' },
-  { label: 'Marketing', percent: 15, color: '#2dd4bf', description: 'Growth campaigns and partnerships' },
-  { label: 'Team', percent: 10, color: '#22d3ee', description: 'Core team with vesting schedule' },
-  { label: 'Reserve', percent: 10, color: '#6ee7b7', description: 'Treasury and future opportunities' },
+  {
+    label: 'Locked for 2 years',
+    percent: 35,
+    amount: 105_000_000,
+    color: '#03f8c5',
+    description: 'Tokens locked for a 2-year vesting period',
+  },
+  {
+    label: 'Available for market',
+    percent: 30,
+    amount: 90_000_000,
+    color: '#34d399',
+    description: 'Circulating supply available for public trading',
+  },
+  {
+    label: 'Strategic partnerships',
+    percent: 25,
+    amount: 75_000_000,
+    color: '#2dd4bf',
+    description: 'Reserved for strategic partners and ecosystem growth',
+  },
+  {
+    label: 'Project reserve',
+    percent: 10,
+    amount: 30_000_000,
+    color: '#6ee7b7',
+    description: 'Treasury reserve for future project development',
+  },
 ];
 
 function toggleSelection(current, label) {
@@ -135,7 +154,7 @@ function DonutChart({ hovered, onHover }) {
               {active.percent}%
             </span>
             <span className="text-white font-semibold text-xs sm:text-sm mt-1">{active.label}</span>
-            <span className="text-white/40 text-[10px] sm:text-xs mt-1">{formatTokenAmount(active.percent)} BUZ</span>
+            <span className="text-white/40 text-[10px] sm:text-xs mt-1">{formatAllocationAmount(active.amount)} BUZ</span>
           </>
         ) : (
           <>
@@ -193,7 +212,7 @@ function AllocationCard({ item, hovered, onHover }) {
           </div>
           <div className="text-right shrink-0 pl-1">
             <p className="text-primary font-bold text-base sm:text-lg leading-none">{item.percent}%</p>
-            <p className="text-white/30 text-[10px] sm:text-xs mt-0.5 sm:mt-1">{formatTokenAmount(item.percent)}</p>
+            <p className="text-white/30 text-[10px] sm:text-xs mt-0.5 sm:mt-1">{formatAllocationAmount(item.amount)} BUZ</p>
           </div>
         </div>
 
@@ -255,7 +274,7 @@ export default function Tokenomics() {
             {[
               { label: 'Total Supply', value: `${formatTotalSupply()} BUZ` },
               { label: 'Tax', value: '0%' },
-              { label: 'Liquidity', value: 'Locked' },
+              { label: 'Lock Period', value: '2 Years' },
               { label: 'Contract', value: 'Renounced' },
             ].map((stat) => (
               <div

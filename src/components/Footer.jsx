@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { FaFacebook, FaTelegram } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 
@@ -16,8 +17,8 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Brand */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <a
-              href="#home"
+          <Link
+              to="/"
               className="flex items-center justify-center md:justify-start shrink-0"
             >
               <img
@@ -25,7 +26,7 @@ export default function Footer() {
                 alt="BUZ"
                 className="h-8 lg:h-10 w-auto transition-opacity hover:opacity-90"
               />
-            </a>
+            </Link>
             <p className="text-white/40 text-sm max-w-xs">
               The future of digital value. Fast, secure, and community-powered.
             </p>
@@ -56,8 +57,8 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} BUZ. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-xs text-white/30">
-            {/* <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a> */}
+            {/* <Link to="/privacy_policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link to="/terms_of_service" className="hover:text-primary transition-colors">Terms of Service</Link> */}
           </div>
         </div>
       </div>

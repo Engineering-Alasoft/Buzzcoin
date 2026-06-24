@@ -34,10 +34,10 @@ export default function CommunityCTA() {
             </div>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-white/40 text-sm">
-              <span className="flex items-center gap-2">
+              {/* <span className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-primary" />
                 24,500+ Holders
-              </span>
+              </span> */}
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-primary" />
                 Active Community
